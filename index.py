@@ -15,7 +15,6 @@ def count_unique_matches(text, pattern):
 
     return counts
 
-
 def run_calculator(file, pattern, output):
     # read the input file
     with open(file, "r", encoding="utf-8") as f:
@@ -36,8 +35,30 @@ def run_calculator(file, pattern, output):
 
     print(f"dataset of {file} written to: {output}")
 
+def collect_unique_words(input_files, output_file):
+    unique_words = set()
+
+    for file in input_files:
+        with open(file, "r", encoding="utf-8") as f:
+            for line in f:
+                # split by any whitespace (spaces, tabs, newlines)
+                words = line.split()
+                unique_words.update(words)
+
+    # optional: sort alphabetically
+    sorted_words = sorted(unique_words)
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        for word in sorted_words:
+            f.write(word + "\n")
+
 if __name__ == "__main__":
     run_calculator("./wordlists/bible.txt", pattern_vowels, "./statistics/vowels/bible.csv")
     run_calculator("./wordlists/bible.txt", pattern_consonants, "./statistics/consonants/bible.csv")
     run_calculator("./wordlists/dictionary.txt", pattern_vowels, "./statistics/vowels/dictionary.csv")
     run_calculator("./wordlists/dictionary.txt", pattern_consonants, "./statistics/consonants/dictionary.csv")
+    run_calculator("./wordlists/gold_age.txt", pattern_vowels, "./statistics/vowels/gold_age.csv")
+    run_calculator("./wordlists/gold_age.txt", pattern_consonants, "./statistics/consonants/gold_age.csv")
+    collect_unique_words(["./wordlists/bible.txt", "./wordlists/dictionary.txt", "./wordlists/gold_age.txt"], "./wordlists/total_list.txt")
+    run_calculator("./wordlists/total_list.txt", pattern_vowels, "./statistics/vowels/total_list.csv")
+    run_calculator("./wordlists/total_list.txt", pattern_consonants, "./statistics/consonants/total_list.csv")
