@@ -1,7 +1,7 @@
 #  dzainacoit (ձայնակոյտ)
 
 ### sources
-- gold age classical armenian authors - https://www.12historians.armeniancathedral.org/index.htm
+- golden age classical armenian manuscripts - https://www.12historians.armeniancathedral.org/index.htm
 - 19th century classical armenian bible - https://arak29.org/bible/book/index.htm
 - 19th century classical armenian dictionary - https://github.com/norayr/enacademic_to_stardict
 
