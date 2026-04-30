@@ -4,7 +4,8 @@ from collections import defaultdict
 
 pattern_vowels = r'(?:((?<![աէոօեիը])ւ)|(?:[աէոօեիը]+վ(?![աէոօեիը]|$)|[աէոօեիը]+[ւյ]?))' # vowels
 pattern_consonants = r'[^\n\sաէոօեիըւ0-9]+' # consonants
-pattern_digraphs = r'(?=([^\n\s]{2}))' #digraph
+pattern_monographs = r'(?=([^\n\s]{1}))' #monographs
+pattern_digraphs = r'(?=([^\n\s]{2}))' #digraphs
 
 allow_overlap = False
 
@@ -69,30 +70,36 @@ def replace_substring_in_wordlist(input_file, output_file, old, new):
 if __name__ == "__main__":
     run_calculator("./wordlists/bible.txt", pattern_vowels, 0, "./statistics/vowels/bible.csv")
     run_calculator("./wordlists/bible.txt", pattern_consonants, 0, "./statistics/consonants/bible.csv")
+    run_calculator("./wordlists/bible.txt", pattern_monographs, 1, "./statistics/monographs/bible.csv")
     run_calculator("./wordlists/bible.txt", pattern_digraphs, 1, "./statistics/digraphs/bible.csv")
 
     run_calculator("./wordlists/dictionary.txt", pattern_vowels, 0, "./statistics/vowels/dictionary.csv")
     run_calculator("./wordlists/dictionary.txt", pattern_consonants, 0, "./statistics/consonants/dictionary.csv")
+    run_calculator("./wordlists/dictionary.txt", pattern_monographs, 1, "./statistics/monographs/dictionary.csv")
     run_calculator("./wordlists/dictionary.txt", pattern_digraphs, 1, "./statistics/digraphs/dictionary.csv")
 
     run_calculator("./wordlists/gold_age.txt", pattern_vowels, 0, "./statistics/vowels/gold_age.csv")
     run_calculator("./wordlists/gold_age.txt", pattern_consonants, 0, "./statistics/consonants/gold_age.csv")
+    run_calculator("./wordlists/gold_age.txt", pattern_monographs, 1, "./statistics/monographs/gold_age.csv")
     run_calculator("./wordlists/gold_age.txt", pattern_digraphs, 1, "./statistics/digraphs/gold_age.csv")
 
     collect_unique_words(["./wordlists/bible.txt", "./wordlists/dictionary.txt", "./wordlists/gold_age.txt"], "./wordlists/total_list.txt")
    
     run_calculator("./wordlists/total_list.txt", pattern_vowels, 0, "./statistics/vowels/total_list.csv")
     run_calculator("./wordlists/total_list.txt", pattern_consonants, 0, "./statistics/consonants/total_list.csv")
+    run_calculator("./wordlists/total_list.txt", pattern_monographs, 1, "./statistics/monographs/total_list.csv")
     run_calculator("./wordlists/total_list.txt", pattern_digraphs, 1, "./statistics/digraphs/total_list.csv")
 
     replace_substring_in_wordlist("./wordlists/total_list.txt", "./wordlists/total_list_no_o.txt", "օ", "աւ")
 
     run_calculator("./wordlists/total_list_no_o.txt", pattern_vowels, 0, "./statistics/vowels/total_list_no_o.csv")
     run_calculator("./wordlists/total_list_no_o.txt", pattern_consonants, 0, "./statistics/consonants/total_list_no_o.csv")
+    run_calculator("./wordlists/total_list_no_o.txt", pattern_monographs, 1, "./statistics/monographs/total_list_no_o.csv")
     run_calculator("./wordlists/total_list_no_o.txt", pattern_digraphs, 1, "./statistics/digraphs/total_list_no_o.csv")
 
     replace_substring_in_wordlist("./wordlists/total_list_no_o.txt", "./wordlists/total_list_no_o_f.txt", "ֆ", "փ")
 
     run_calculator("./wordlists/total_list_no_o_f.txt", pattern_vowels, 0, "./statistics/vowels/total_list_no_o_f.csv")
     run_calculator("./wordlists/total_list_no_o_f.txt", pattern_consonants, 0, "./statistics/consonants/total_list_no_o_f.csv")
+    run_calculator("./wordlists/total_list_no_o_f.txt", pattern_monographs, 1, "./statistics/monographs/total_list_no_o_f.csv")
     run_calculator("./wordlists/total_list_no_o_f.txt", pattern_digraphs, 1, "./statistics/digraphs/total_list_no_o_f.csv")
