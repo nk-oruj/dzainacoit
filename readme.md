@@ -8,3 +8,4 @@
 ### calculations
 - frequencies of vowel groups dominant in armenian language - https://github.com/nk-oruj/dzainacoit/tree/main/statistics/vowels
 - frequencies of consonant groups dominant in armenian language - https://github.com/nk-oruj/dzainacoit/tree/main/statistics/consonants
+- frequencies of digraph groups dominant in armenian language - https://github.com/nk-oruj/dzainacoit/tree/main/statistics/digraphs
